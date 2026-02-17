@@ -1,0 +1,4 @@
+# Sum of elements
+lst = [1, 2, 3, 4, 5]
+total = sum(lst)
+print("Sum:", total)
