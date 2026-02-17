@@ -1,5 +1,0 @@
-# List comprehension with condition
-nums = [1, 2, 3, 4, 5]
-evens = [x for x in nums if x % 2 == 0]
-
-print(evens)

@@ -1,5 +1,0 @@
-# Map square to list
-lst = [1, 2, 3, 4]
-squares = list(map(lambda x: x ** 2, lst))
-
-print(squares)

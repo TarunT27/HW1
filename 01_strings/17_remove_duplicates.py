@@ -1,48 +1,36 @@
 """
 Program 17: Remove duplicate characters from a string
-Author: Python Programs Collection
-Description: Removes all duplicate characters from a string
+This program removes all duplicate characters, keeping only first occurrence.
 """
 
 def remove_duplicates(s):
-    """
-    Remove duplicate characters using dict.fromkeys().
-    
-    Args:
-        s (str): The input string
-        
-    Returns:
-        str: String with duplicate characters removed
-    """
-    return "".join(dict.fromkeys(s))
-
-
-def remove_duplicates_set(s):
-    """
-    Remove duplicates using set (order may not be preserved).
-    
-    Args:
-        s (str): The input string
-        
-    Returns:
-        str: String with duplicates removed
-    """
+    """Remove duplicate characters from a string"""
     seen = set()
     result = ""
     for char in s:
         if char not in seen:
-            seen.add(char)
             result += char
+            seen.add(char)
     return result
 
 
+# Main program
 if __name__ == "__main__":
-    # Test cases
-    test_strings = ["hello", "programming", "aabbcc", "a", "mississippi"]
+    test_strings = ["hello", "programming", "aabbcc", "mississippi", "abcdef"]
     
+    print("Duplicate Character Remover")
+    print("-" * 40)
     for test in test_strings:
-        result1 = remove_duplicates(test)
-        result2 = remove_duplicates_set(test)
-        print(f"String: '{test}'")
-        print(f"  dict.fromkeys(): '{result1}'")
-        print(f"  set method: '{result2}'\n")
+        result = remove_duplicates(test)
+        print(f"'{test}' -> '{result}'")
+
+"""
+OUTPUT:
+Duplicate Character Remover
+----------------------------------------
+'hello' -> 'helo'
+'programming' -> 'progamin'
+'aabbcc' -> 'abc'
+'mississippi' -> 'misp'
+'abcdef' -> 'abcdef'
+"""

@@ -1,53 +1,44 @@
 """
 Program 4: Count the number of words in a string
-Author: Python Programs Collection
-Description: Counts the number of words in a given string
+This program counts the number of words separated by spaces.
 """
 
 def count_words(s):
-    """
-    Count the number of words in a string.
-    
-    Args:
-        s (str): The input string
-        
-    Returns:
-        int: The number of words
-    """
-    # Split by spaces and filter empty strings
-    words = [word for word in s.split() if word]
-    return len(words)
+    """Count the number of words in a string"""
+    if not s.strip():  # Handle empty or whitespace-only strings
+        return 0
+    return len(s.split())
 
 
 def count_words_manual(s):
-    """
-    Count words without using split method.
-    
-    Args:
-        s (str): The input string
-        
-    Returns:
-        int: The number of words
-    """
-    word_count = 0
-    in_word = False
-    
+    """Count words manually without split()"""
+    if not s.strip():
+        return 0
+    word_count = 1
     for char in s:
-        if char != ' ':
-            if not in_word:
-                word_count += 1
-                in_word = True
-        else:
-            in_word = False
-    
+        if char == " ":
+            word_count += 1
     return word_count
 
 
+# Main program
 if __name__ == "__main__":
-    # Test cases
-    test_strings = ["hello world", "python programming language", "a b c d e", "   spaced   words   "]
+    test_strings = ["Hello World", "Python is awesome", "OneWord", "   ", "", "The quick brown fox"]
     
+    print("Word Counter")
+    print("-" * 40)
     for test in test_strings:
-        print(f"String: '{test}'")
-        print(f"  Words (split): {count_words(test)}")
-        print(f"  Words (manual): {count_words_manual(test)}\n")
+        count = count_words(test)
+        print(f"'{test}' -> {count} words")
+
+"""
+OUTPUT:
+Word Counter
+----------------------------------------
+'Hello World' -> 2 words
+'Python is awesome' -> 3 words
+'OneWord' -> 1 words
+'   ' -> 0 words
+'' -> 0 words
+'The quick brown fox' -> 4 words
+"""
